@@ -9,7 +9,7 @@
 .reduce(
   (acc, v, i) => {{ '{' }}
     {{ fctString().trim() }}
-  {{ '}' }} {{ acc === undefined ? '' : (", " + acc) }}
+  {{ '}' }} <label *ngIf="acc !== undefined">, {{acc | json}}</label>
 )
 
         </pre>
@@ -35,17 +35,17 @@
           <tbody>
             <tr *ngFor = "let step of steps | async; index as i">
               <td>{{i + 1}}</td>
-              <td>{{step[0]}}</td>
-              <td>{{step[1]}}</td>
+              <td>{{step[0] | json}}</td>
+              <td>{{step[1] | json}}</td>
               <td>{{step[2]}}</td>
-              <td>{{step[3]}}</td>
+              <td>{{step[3] | json}}</td>
             </tr>
           </tbody>
         </table>
 
         <mat-spinner *ngIf="hasNextStep() && stepNum.value >= 0"></mat-spinner>
         <h3 *ngIf="!hasNextStep()">
-          Résultat : {{ res[1] }}
+          Résultat : {{ res[1] | json }}
         </h3>
       </td>
     </tr>

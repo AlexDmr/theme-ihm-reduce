@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
-import { filter, map, startWith, tap } from 'rxjs/operators';
+import { catchError, filter, map, startWith, tap } from 'rxjs/operators';
 
 type REDUCER = (acc: any, v: any, i: number) => any;
 
@@ -20,14 +20,15 @@ export class PageNavComponent implements OnInit {
       map( P => P['t'] ),
       tap( t => console.log("param t =", t) ),
       map( t => JSON.parse(t) ?? [5, 3, 1, 2, 4, 6] as any[] ),
-      startWith( [6,5,4] )
+      startWith( [5, 3, 1, 2, 4, 6] )
     );
 
     const f = this.route.queryParams.pipe(
       filter( P => !!P.f ),
       map( P => P['f'] ),
       tap( f => console.log("param f =", f) ),
-      map( f => f ? new Function("acc", "v", "i", f) as REDUCER : (a: any) => a ),
+      map( f => f ? new Function("acc", "v", "i", f) as REDUCER : (a: any) => acc ),
+      catchError( err => new Function("acc", "v", "i", `/*ERROR:\n ${err} */`) as REDUCER ),
       startWith( function(acc: any) {return acc;} )
     );
 

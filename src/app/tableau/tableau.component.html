@@ -4,7 +4,7 @@
       <td *ngFor="let v of t; index as i"
           [class.highlight] = "highlight.indexOf(i) >= 0"
       >
-        {{v}}
+        {{v | json}}
       </td>
     </tr>
   </tbody>
