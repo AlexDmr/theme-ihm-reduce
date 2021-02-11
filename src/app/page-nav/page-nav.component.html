@@ -1,0 +1,11 @@
+<!--
+<pre>
+  tab: {{data | async}}.
+</pre>
+-->
+
+<app-reducer *ngIf = "data | async as D"
+             [t]   = "D[0]" 
+             [f]   = "D[1]"
+             [acc] = "D[2]" >
+</app-reducer>

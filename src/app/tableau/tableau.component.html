@@ -1,0 +1,11 @@
+<table>
+  <tbody>
+    <tr>
+      <td *ngFor="let v of t; index as i"
+          [class.highlight] = "highlight.indexOf(i) >= 0"
+      >
+        {{v}}
+      </td>
+    </tr>
+  </tbody>
+</table>

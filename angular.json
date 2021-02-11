@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "theme-ihm-reduce"
+  "defaultProject": "theme-ihm-reduce",
+  "cli": {
+    "analytics": "c3714b92-139a-403c-8792-3d3c7858c329"
+  }
 }

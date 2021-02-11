@@ -1,0 +1,56 @@
+<table class="layout">
+  <tbody>
+    <tr>
+      <td>
+        <app-tableau [t]="t" [highlight] = "[(indexObs | async)!]">
+        </app-tableau>
+
+        <pre>
+.reduce(
+  (acc, v, i) => {{ '{' }}
+    {{ fctString().trim() }}
+  {{ '}' }} {{ acc === undefined ? '' : (", " + acc) }}
+)
+
+        </pre>
+      </td>
+      <td>
+        <h3>Exécution</h3>
+
+        <button mat-raised-button
+                color  = "primary"
+              (click) = "nextStep()">
+          {{ labelButton }}
+        </button>
+
+
+        <table class="traces">
+          <thead>
+            <th>Appel</th>
+            <th>Accumulateur</th>
+            <th>Valeur courante</th>
+            <th>Indice</th>
+            <th>Valeur renvoyée</th>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let step of steps | async; index as i">
+              <td>{{i + 1}}</td>
+              <td>{{step[0]}}</td>
+              <td>{{step[1]}}</td>
+              <td>{{step[2]}}</td>
+              <td>{{step[3]}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <mat-spinner *ngIf="hasNextStep() && stepNum.value >= 0"></mat-spinner>
+        <h3 *ngIf="!hasNextStep()">
+          Résultat : {{ res[1] }}
+        </h3>
+      </td>
+    </tr>
+  </tbody>
+<section>
+
+<section class="exec">
+</section>

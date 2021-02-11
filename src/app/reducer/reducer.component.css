@@ -1,0 +1,40 @@
+table.traces {
+  border-collapse: collapse;
+  border: solid black 1px;
+  margin-top: 1em;
+}
+
+table.traces thead {
+  background-color: lightblue;
+  border-bottom: solid black 1px;
+}
+
+table.traces thead th {
+  padding-right: 1em;
+}
+
+table.traces tr {
+  border-bottom: solid black 1px;
+}
+
+table.traces tr:nth-child(2n) {
+  background: lightgrey
+}
+
+table.traces tr:last-child {
+  background: lightgreen;
+}
+
+table.layout td {
+  vertical-align: top;
+}
+
+table.layout td > h3 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+table.layout td:first-child {
+  border-right: solid black 1px;
+  padding-right: 2em;
+}
